@@ -7,9 +7,9 @@
 
 # see https://wiki.python.org/moin/ConfigParserShootout
 from configobj import ConfigObj
-config = ConfigObj('RelayduinoMqttController.cfg')
+config = ConfigObj('Duinotech595MqttController.cfg')
 
-print("{0}".format("Relayduino MQTT Controller Simulator"))
+print("{0}".format("Duinotech 595 MQTT Controller Simulator"))
 
 
 #---------------------------------------------------------------------------------------
@@ -44,8 +44,8 @@ def on_message(client, userdata, message) :
 	# 		switchRelayOn()
 	# 	elif (message.payload == "0") :
 	# 		switchRelayOff()
-	else :
-		print("unexpected message received!!")
+	#else :
+	#	print("unexpected message received!!")
 #    print("message received: topic is {0} with payload {1}".format(message.topic, message.payload))
 
 def on_publish(client, userdata, mid) :
@@ -102,8 +102,9 @@ while True :
 #				mqttc.publish("relayduino/request/memory");
 			if command_type is 'l' :
 				colour = raw_input("Enter colour ('g', 'r', 'b', 'w'): ")
-				if command_type in led_colour_valid_inputs :
+				if colour in led_colour_valid_inputs :
 					if colour is 'g' :
+						print("publish GREEN")
 						client.publish("porchlight/control/led", "GREEN");
 					elif colour is 'r' :
 						client.publish("porchlight/control/led", "RED");
