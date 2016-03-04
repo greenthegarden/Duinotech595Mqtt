@@ -1,44 +1,16 @@
-sitemap relayduino label="Relayduino Irrigation Controller"
+sitemap duinotech595 label="Duinotech 595 Controller"
 {
 	Frame {
-		Group item=Irrigation label="Irrigation" icon="water"
+		Text label="Front Porch" {
+//			Switch item=Manual
+			Switch item=Master
+			Switch item=LightColour label="Light Colour" mappings=[0="Off", 1="Green", 2="Red", 3="Blue", 4="White"] visibility=[Master!=OFF]
+//			Switch item=Green
+//			Switch item=Red
+//			Switch item=Blue
+//			Switch item=White
+			Text item=Temperature 
+			Switch item=PIR
+		}
 	}
-	Frame label="Weather" {
-		Group item=Weather label="Weather"
-	}
-	Frame label="Date" {
-		Text item=Date
-	}
-	Frame {
-		Text label="Fruit Tree Irrigation Zone" visibility=[Irrigation_Master==ON] {
-           	Setpoint item=Zone1_Duration minValue=0 maxValue=600 step=5
-			Switch item=Zone1_Auto visibility=[Zone1_Auto==ON]
-			Switch item=Zone1_Manual visibility=[Zone1_Auto!=ON]
-           	Switch item=Zone1_RelayCtrl
-			Switch item=Zone1_Run
-			Text item=ZonesRequestsNumber            	
-        }
-    }
-	Frame {
-		Text label="Vegetable Irrigation Zone" visibility=[Irrigation_Master==ON] {
-           	Setpoint item=Zone2_Duration minValue=0 maxValue=600 step=1
-           	Switch item=Zone2_Auto visibility=[Zone2_Auto==ON]
-			Switch item=Zone2_Manual visibility=[Zone2_Auto!=ON]
-			Switch item=Zone2_Run
-           	Switch item=Zone2_RelayCtrl
-			Text item=ZonesRequestsNumber            	
-        }
-    }
-	Frame {
-		Text label="Shrub Irrigation Zone" visibility=[Irrigation_Master==ON] {
-           	Setpoint item=Zone3_Max_Duration minValue=0 maxValue=600 step=1
-           	Setpoint item=Zone3_Volume minValue=0 maxValue=3000 step=100
-           	Switch item=Zone3_Auto visibility=[Zone3_Auto==ON]
-			Switch item=Zone3_Manual visibility=[Zone3_Auto!=ON]
-			Switch item=Zone3_Run
-           	Switch item=Zone3_RelayCtrl
-			Text item=ZonesRequestsNumber            	
-        }
-    }
 }
-
