@@ -27,8 +27,8 @@ def on_connect(client, userdata, flags, rc) :
 	print("Subscribing to topics ...")
 #	for topic in config['mqtt_topics']['TOPICS'] :
 	topic = config['mqtt_topics']['TOPIC']
-		client.subscribe(topic)
-		print("{0}".format(topic))
+	client.subscribe(topic)
+	print("{0}".format(topic))
 
 def on_subscribe(client, userdata, mid, granted_qos) :
     print("Subscribed: "+str(mid)+" "+str(granted_qos))
